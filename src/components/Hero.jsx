@@ -1,30 +1,41 @@
-
 import Image from "next/image";
+import Link from "next/link"; 
 
-export default function Hero({ nama, tagline }) {
-  return (
-    <section className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row items-center gap-6">
-      <div className="w-28 h-28 rounded-full overflow-hidden bg-gray-200 border-2 border-red-500 shrink-0 flex items-center justify-center">
-        <Image
-          src="/fathir.jpg"
-          alt={`Foto profil ${nama}`}
-          width={128}
-          height={128}
-          priority
-          className="object-cover w-full h-full"
-        />
-      </div>
 
-      <div className="text-center md:text-left">
-        <h1 className="text-2xl md:text-3xl font-extrabold text-slate-800">
-          Halo, saya{" "}
-          <span className="text-slate-900">{nama}</span>!
-        </h1>
-
-        <p className="text-sm text-gray-500 mt-1">
-          {tagline}
-        </p>
-      </div>
-    </section>
-  );
+export default function Hero({ nama, tagline, onLihatKeahlianClick }) {  
+  return (    
+    <section className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">      
+      <Image      
+        src="/fathir.jpg"        
+        alt={`Foto profil ${nama}`}        
+        width={180}        
+        height={180}        
+        loading="eager"        
+        className="w-32 h-32 rounded-full aspect-square object-cover border-4 border-red-600"     
+      />      
+      <div className="flex-1">        
+        <h1 className="text-3xl font-bold text-utama md:text-5xl">Halo, saya {nama}!</h1>        
+        <p className="mt-3 text-lg text-gray-700">{tagline}</p>      
+        
+        
+        <div className="mt-5 flex flex-wrap items-center gap-3 justify-center md:justify-start">
+          
+          
+          <Link 
+            href="/tentang" 
+            className="bg-[#C1121F] text-white px-5 py-2 rounded-lg font-medium text-sm transition hover:opacity-90 cursor-pointer inline-block"
+          >
+            Tentang saya
+          </Link>
+          
+          <button 
+            onClick={onLihatKeahlianClick}
+            className="bg-white border border-gray-300 text-gray-800 px-5 py-2 rounded-lg font-medium text-sm transition hover:bg-gray-50 cursor-pointer"
+          >
+            Lihat keahlian
+          </button>
+        </div>
+      </div>    
+    </section>  
+  ); 
 }

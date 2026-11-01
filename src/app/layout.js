@@ -1,6 +1,8 @@
-
+import { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,10 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Fathir Azzikri Putra Wibowo | Portofolio",
-  description:
-    "Portofolio Fathir Azzikri Putra Wibowo, siswa SMK calon Junior Web Developer di Kelas Industri UBIG.",
+  title: {
+    default: "Fathir Azzikri Putra Wibowo | portofolio",
+    template: "%s | Fathir Azzikri Putra Wibowo",
+  },
+  description: "portofolio Fathir Azzikri Putra Wibowo, siswa SMK calon Junior Web Developer di kelas Industri UBIG",
 };
+
 
 export default function RootLayout({ children }) {
   return (
@@ -24,9 +29,14 @@ export default function RootLayout({ children }) {
       lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col bg-latar text-gray-800">
+        <Navbar />
         {children}
+        <Footer />
       </body>
+
     </html>
+
+
   );
 }
