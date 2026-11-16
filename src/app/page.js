@@ -4,6 +4,7 @@ import Link from "next/link";
 import Hero from "@/components/Hero";
 import ProyekCard from "@/components/ProyekCard";
 import SkillCard from "@/components/SkillsCard";
+import { buttonVariants } from "@/components/ui/button";
 import { proyek } from "@/data/proyek";
 
 export default function Home() {
@@ -69,9 +70,8 @@ export default function Home() {
           
           <div className="mt-8 flex justify-start">
             <Link 
-              href="/proyek" 
-              className="rounded-lg bg-red-700 px-5 py-2.5 font-semibold text-white shadow-sm hover:bg-red-800 transition-all text-sm"
-            >
+              href="/proyek" className={buttonVariants ({ size: "lg", 
+                className: "mt-6" })}>
               Lihat semua proyek
             </Link>
           </div>
